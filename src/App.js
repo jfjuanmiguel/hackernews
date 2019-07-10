@@ -51,7 +51,9 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Search value={searchTerm} onChange={onSearchChange} />
+        <Search value={searchTerm} onChange={onSearchChange}>
+          Search
+        </Search>
         <Table
           list={list}
           pattern={searchTerm}
@@ -64,15 +66,12 @@ class App extends Component {
 
 class Search extends Component {
   render() {
-    const { searchTerm, onSearchChange } = this.props;
+    const { value, onChange, children } = this.props;
 
     return (
       <form>
-        <input
-          type='text'
-          value={searchTerm}
-          onChange={onSearchChange}
-        />
+        {children}{' '}
+        <input type='text' value={value} onChange={onChange} />
       </form>
     );
   }
